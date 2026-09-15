@@ -1,0 +1,37 @@
+
+services:
+  vllm-gemma4:
+    image: vllm/vllm-openai:latest
+    container_name: vllm-gemma-e2b
+    environment:
+      - HUGGING_FACE_HUB_TOKEN=${HF_TOKEN:-}
+    volumes:
+      # Standard model weight caching
+      - ~/.cache/huggingface:/root/.cache/huggingface
+      # MOUNT THE STRICT DEFAULTS FILE: Maps your custom config inside the container
+      - ./generation_config.json:/config/generation_config.json
+    ports:
+      - "8070:8070"
+    ipc: host
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    command: >
+      --model cyankiwi/gemma-4-E2B-it-AWQ-INT4
+      --quantization awq
+      --host 0.0.0.0
+      --port 8070
+      --trust-remote-code
+      --gpu-memory-utilization 0.65
+      --max-model-len 4096
+      --tool-call-parser gemma4
+      --max-num-seqs 2
+      --enable-auto-tool-choice
+      --limit-mm-per-prompt '{"image": 4, "audio": 1}'
+      --generation-config /config/generation_config.json
+    restart: unless-stopped
+
