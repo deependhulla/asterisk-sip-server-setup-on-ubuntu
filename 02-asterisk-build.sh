@@ -52,3 +52,6 @@ sed -i 's";radiuscfg => /usr/local/etc/radiusclient-ng/radiusclient.conf"radiusc
 systemctl start asterisk
 systemctl enable asterisk
 
+## only to keep safe copy of orginal setup for study
+/bin/cp -pRv /etc/asterisk /etc/asterisk_backup_full_orgina
+

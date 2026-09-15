@@ -17,7 +17,7 @@ apt -y install vim jq yq fzf postfix conntrack openssh-server locales screen net
 sudo wget curl ethtool bridge-utils nmon iptraf-ng traceroute atop telnet arping software-properties-common \
 dirmngr parted gdisk apt-transport-https whiptail lsb-release iptables ca-certificates iputils-ping \
 debconf-utils gnupg pwgen xfsprogs nmap iftop htop multitail net-tools elinks pssh ubuntu-advantage-tools \
-socat ipset iptables-persistent gnupg2 zip tar pv auditd rar php-cli iperf itop unrar rsync unzip vnstat ebtables  
+socat ipset iptables-persistent gnupg2 zip tar pv auditd rar php-cli iperf procinfo unrar rsync unzip vnstat ebtables  
 
 ## set to India IST timezone -- You can dissable it if needed
 timedatectl set-timezone 'Asia/Kolkata'
