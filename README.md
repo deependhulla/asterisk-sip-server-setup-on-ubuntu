@@ -1,4 +1,5 @@
 # asterisk-sip-server-setup-on-ubuntu
+- Setup on Ubuntu 26 amd64
 - Asterisk Setup Version 22
 - Docker Container
 - NVIDIA drivers with Docker Container support
