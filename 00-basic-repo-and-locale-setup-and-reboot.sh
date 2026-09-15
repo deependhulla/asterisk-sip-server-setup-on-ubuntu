@@ -45,6 +45,7 @@ chmod 600 /opt/old-config-backup
 
 ## centos like bash ..for all inteactive 
 echo "" >> /etc/bash.bashrc
+echo "PATH=$HOME/.local/bin:.:$PATH" >> /etc/bash.bashrc
 echo "alias cp='cp -i'" >> /etc/bash.bashrc
 echo "alias l.='ls -d .* --color=auto'" >> /etc/bash.bashrc
 echo "alias ll='ls -l --color=auto'" >> /etc/bash.bashrc
