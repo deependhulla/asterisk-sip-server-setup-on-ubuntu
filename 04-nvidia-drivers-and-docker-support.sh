@@ -17,4 +17,4 @@ export NVIDIA_CONTAINER_TOOLKIT_VERSION=1.20.0-1
       libnvidia-container-tools=${NVIDIA_CONTAINER_TOOLKIT_VERSION} \
       libnvidia-container1=${NVIDIA_CONTAINER_TOOLKIT_VERSION}
 
-echo "Please Remote first to make NVIDIA modules active including container toolkit"
+echo "Please Reboot the server, so to make NVIDIA modules active including container toolkit"
