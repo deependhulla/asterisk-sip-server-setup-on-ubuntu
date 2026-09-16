@@ -1,6 +1,10 @@
 #!/bin/bash
+
+## Reason on main most ..is full binary wrks for majour old NVIDIA cards .
+## while container ollma orvllm uses support latest version mostly.
+
 mkdir /opt/ollma-custom-models
-#curl -fsSL https://ollama.com/install.sh | sh
+curl -fsSL https://ollama.com/install.sh | sh
 
 
 # Define the directory and file path for the systemd override
