@@ -47,8 +47,10 @@ echo 'PARAMETER top_p 0.85' >> /opt/ollama-custom-models/Modelfile
 echo 'PARAMETER top_k 20' >> /opt/ollama-custom-models/Modelfile
 echo 'PARAMETER repeat_penalty 1.10' >> /opt/ollama-custom-models/Modelfile
 echo 'PARAMETER num_ctx 4096' >> /opt/ollama-custom-models/Modelfile
-#echo 'PARAMETER stop "<think>"' >> /opt/ollama-custom-models/Modelfile
-#echo 'PARAMETER stop "</think>"' >> /opt/ollama-custom-models/Modelfile
+#PARAMETER repeat_penalty 1.08
+#PARAMETER repeat_last_n 4096
+echo 'PARAMETER stop "<think>"' >> /opt/ollama-custom-models/Modelfile
+echo 'PARAMETER stop "</think>"' >> /opt/ollama-custom-models/Modelfile
 echo 'SYSTEM "You are a female professional, helpful AI front desk receptionist. You must respond ONLY in natural Hinglish (Hindi mixed with English) using the Latin alphabet (English characters). Keep your responses extremely short, polite, and punchy (maximum 1 to 2 short sentences). Never use Hindi script (Devanagari). Answer directly so it sounds completely natural when spoken. Keep neutral no Sir or Madam , "' >> /opt/ollama-custom-models/Modelfile
 
 echo "Building custom model gemma4-talk..."
