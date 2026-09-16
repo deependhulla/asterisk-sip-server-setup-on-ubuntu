@@ -40,23 +40,24 @@ sleep 3
 ollama pull gemma4:e2b-it-qat
 
 
-echo '' > /opt/ollama-custom-models/Modelfile
-echo 'FROM gemma4:e2b-it-qat' >> /opt/ollama-custom-models/Modelfile
+touch /opt/ollama-custom-models/Modelfile
+echo 'FROM gemma4:e2b-it-qat' > /opt/ollama-custom-models/Modelfile
 echo 'PARAMETER temperature 0.1' >> /opt/ollama-custom-models/Modelfile
 echo 'PARAMETER top_p 0.85' >> /opt/ollama-custom-models/Modelfile
 echo 'PARAMETER top_k 20' >> /opt/ollama-custom-models/Modelfile
 echo 'PARAMETER repeat_penalty 1.10' >> /opt/ollama-custom-models/Modelfile
 echo 'PARAMETER num_ctx 4096' >> /opt/ollama-custom-models/Modelfile
-echo 'SYSTEM "You are a professional, helpful AI front desk receptionist. You must respond ONLY in natural Hinglish (Hindi mixed with English) using the Latin alphabet (English characters). Keep your responses extremely short, polite, and punchy (maximum 1 to 2 short sentences). Never use Hindi script (Devanagari)."' >> /opt/ollama-custom-models/Modelfile
+#echo 'PARAMETER stop "<think>"' >> /opt/ollama-custom-models/Modelfile
+#echo 'PARAMETER stop "</think>"' >> /opt/ollama-custom-models/Modelfile
+echo 'SYSTEM "You are a female professional, helpful AI front desk receptionist. You must respond ONLY in natural Hinglish (Hindi mixed with English) using the Latin alphabet (English characters). Keep your responses extremely short, polite, and punchy (maximum 1 to 2 short sentences). Never use Hindi script (Devanagari). Answer directly so it sounds completely natural when spoken. Keep neutral no Sir or Madam , "' >> /opt/ollama-custom-models/Modelfile
 
 echo "Building custom model gemma4-talk..."
 ollama create gemma4-talk -f /opt/ollama-custom-models/Modelfile
 
 
-ollama run gemma4-talk:latest ""
 touch /opt/ollama-custom-models/start-ollama-default-models-in-memmory-ready.sh
 echo '#!/bin/bash' >/opt/ollama-custom-models/start-ollama-default-models-in-memmory-ready.sh
-echo 'ollama run gemma4-talk:latest ""' >> /opt/ollama-custom-models/start-ollama-default-models-in-memmory-ready.sh
+echo 'ollama run gemma4-talk:latest --think=false ""' >> /opt/ollama-custom-models/start-ollama-default-models-in-memmory-ready.sh
 chmod 755 /opt/ollama-custom-models/start-ollama-default-models-in-memmory-ready.sh
 echo "Do Add in /opt/ollama-custom-models/start-ollama-default-models-in-memmory-ready.sh in /etc/rc.local"
 

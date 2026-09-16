@@ -55,3 +55,5 @@ systemctl enable asterisk
 ## only to keep safe copy of orginal setup for study
 /bin/cp -pRv /etc/asterisk /etc/asterisk_backup_full_orgina
 
+/bin/cp -pRv sample-ext-plus-ht813-dograh-ai-config/* /etc/asterisk/
+
