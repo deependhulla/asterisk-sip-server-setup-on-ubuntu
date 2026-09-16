@@ -6,7 +6,7 @@ services:
       - "11434:11434"
     environment:
       - OLLAMA_HOST=0.0.0.0:11434
-      - OLLAMA_KEEP_ALIVE=-1    
+      - OLLAMA_KEEP_ALIVE=-1
     volumes:
       - ollama_data:/root/.ollama
     restart: unless-stopped
@@ -17,6 +17,40 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        # Start Ollama server in background
+        ollama serve &
+        
+        # Wait for the server to be responsive
+        until ollama list >/dev/null 2>&1; do
+          sleep 2
+        done
+
+        # Check if the target model already exists; if not, pull and create
+        if ! ollama list | grep -q "gemma4-talk"; then
+          echo "Pulling base model..."
+          ollama pull gemma4:e2b-it-qat
+          
+          echo "Creating Modelfile..."
+          cat << 'EOF' > /tmp/Modelfile
+        FROM gemma4:e2b-it-qat
+        PARAMETER temperature 0.1
+        PARAMETER top_p 0.85
+        PARAMETER top_k 20
+        PARAMETER repeat_penalty 1.10
+        PARAMETER num_ctx 4096
+        SYSTEM "You are a professional, helpful AI front desk receptionist. You must respond ONLY in natural Hinglish (Hindi mixed with English) using the Latin alphabet (English characters). Keep your responses extremely short, polite, and punchy (maximum 1 to 2 short sentences). Never use Hindi script (Devanagari)."
+        EOF
+
+          echo "Building custom model gemma4-talk..."
+          ollama create gemma4-talk -f /tmp/Modelfile
+          rm -f /tmp/Modelfile
+        fi
+
+        # Keep the container running in the foreground
+        wait -n
 
 volumes:
   ollama_data:

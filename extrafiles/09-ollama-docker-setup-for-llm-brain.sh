@@ -5,4 +5,4 @@ mkdir /opt/ollama-ai-brain
 cd /opt/ollama-ai-brain
 docker compose up -d
 echo "Downloading Model"
-docker exec -it ollama ollama pull gemma4:e2b
+#docker exec -it ollama ollama pull gemma4:e2b
