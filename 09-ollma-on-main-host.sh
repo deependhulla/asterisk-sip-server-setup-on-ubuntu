@@ -3,7 +3,7 @@
 ## Reason on main most ..is full binary wrks for majour old NVIDIA cards .
 ## while container ollma orvllm uses support latest version mostly.
 
-mkdir /opt/ollma-custom-models
+mkdir /opt/ollama-custom-models
 curl -fsSL https://ollama.com/install.sh | sh
 
 
@@ -40,16 +40,16 @@ sleep 3
 ollama pull gemma4:e2b-it-qat
 
 
-echo '' > /opt/ollma-custom-models/Modelfile
-echo 'FROM gemma4:e2b-it-qat' >> /opt/ollma-custom-models/Modelfile
-echo 'PARAMETER temperature 0.1' >> /opt/ollma-custom-models/Modelfile
-echo 'PARAMETER top_p 0.85' >> /opt/ollma-custom-models/Modelfile
-echo 'PARAMETER top_k 20' >> /opt/ollma-custom-models/Modelfile
-echo 'PARAMETER repeat_penalty 1.10' >> /opt/ollma-custom-models/Modelfile
-echo 'PARAMETER num_ctx 4096' >> /opt/ollma-custom-models/Modelfile
-echo 'SYSTEM "You are a professional, helpful AI front desk receptionist. You must respond ONLY in natural Hinglish (Hindi mixed with English) using the Latin alphabet (English characters). Keep your responses extremely short, polite, and punchy (maximum 1 to 2 short sentences). Never use Hindi script (Devanagari)."' >> /opt/ollma-custom-models/Modelfile
+echo '' > /opt/ollama-custom-models/Modelfile
+echo 'FROM gemma4:e2b-it-qat' >> /opt/ollama-custom-models/Modelfile
+echo 'PARAMETER temperature 0.1' >> /opt/ollama-custom-models/Modelfile
+echo 'PARAMETER top_p 0.85' >> /opt/ollama-custom-models/Modelfile
+echo 'PARAMETER top_k 20' >> /opt/ollama-custom-models/Modelfile
+echo 'PARAMETER repeat_penalty 1.10' >> /opt/ollama-custom-models/Modelfile
+echo 'PARAMETER num_ctx 4096' >> /opt/ollama-custom-models/Modelfile
+echo 'SYSTEM "You are a professional, helpful AI front desk receptionist. You must respond ONLY in natural Hinglish (Hindi mixed with English) using the Latin alphabet (English characters). Keep your responses extremely short, polite, and punchy (maximum 1 to 2 short sentences). Never use Hindi script (Devanagari)."' >> /opt/ollama-custom-models/Modelfile
 
 echo "Building custom model gemma4-talk..."
-ollama create gemma4-talk -f /opt/ollma-custom-models/Modelfile
+ollama create gemma4-talk -f /opt/ollama-custom-models/Modelfile
 
 
