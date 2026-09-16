@@ -53,3 +53,11 @@ echo "Building custom model gemma4-talk..."
 ollama create gemma4-talk -f /opt/ollama-custom-models/Modelfile
 
 
+ollama run gemma4-talk:latest ""
+touch /opt/ollama-custom-models/start-ollama-default-models-in-memmory-ready.sh
+echo '#!/bin/bash' >/opt/ollama-custom-models/start-ollama-default-models-in-memmory-ready.sh
+echo 'ollama run gemma4-talk:latest ""' >> /opt/ollama-custom-models/start-ollama-default-models-in-memmory-ready.sh
+chmod 755 /opt/ollama-custom-models/start-ollama-default-models-in-memmory-ready.sh
+echo "Do Add in /opt/ollama-custom-models/start-ollama-default-models-in-memmory-ready.sh in /etc/rc.local"
+
+
