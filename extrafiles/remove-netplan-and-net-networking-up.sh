@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+apt install -y ifupdown
 sudo apt purge netplan.io
 mv -v /etc/netplan /opt/netplain-to-del
 

@@ -13,3 +13,5 @@ curl --remote-name https://raw.githubusercontent.com/speaches-ai/speaches/master
 sed -i 's/8000:8000/8090:8000/g' compose.yaml
 export COMPOSE_FILE=compose.cuda-cdi.yaml
 docker compose up -d
+unset COMPOSE_FILE
+unset COMPOSE_FILE=
