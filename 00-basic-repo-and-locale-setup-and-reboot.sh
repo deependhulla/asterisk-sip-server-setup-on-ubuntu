@@ -13,12 +13,11 @@ echo "postfix postfix/mailname string $CFG_HOSTNAME_FQDN" | debconf-set-selectio
 echo "iptables-persistent iptables-persistent/autosave_v4 boolean true" | debconf-set-selections
 echo "iptables-persistent iptables-persistent/autosave_v6 boolean true" | debconf-set-selections
 
-apt -y install vim jq yq fzf postfix conntrack openssh-server locales screen net-tools git mc tmux sendemail \
-sudo wget curl ethtool bridge-utils nmon iptraf-ng traceroute atop telnet arping software-properties-common \
-dirmngr parted gdisk apt-transport-https whiptail lsb-release iptables ca-certificates iputils-ping \
+apt -y install vim jq yq fzf postfix conntrack openssh-server locales screen net-tools git mc tmux sendemail ffmpeg \
+sudo wget curl ethtool bridge-utils nmon iptraf-ng traceroute atop telnet arping software-properties-common python3.14-dev \
+dirmngr parted gdisk apt-transport-https whiptail lsb-release iptables ca-certificates iputils-ping python3.14-venv \
 debconf-utils gnupg pwgen xfsprogs nmap iftop htop multitail net-tools elinks pssh ubuntu-advantage-tools \
-socat ipset iptables-persistent gnupg2 zip tar pv auditd rar php-cli iperf procinfo unrar rsync unzip vnstat ebtables  
-
+socat ipset iptables-persistent gnupg2 zip tar pv auditd rar php-cli iperf procinfo unrar rsync unzip vnstat ebtables 
 ## set to India IST timezone -- You can dissable it if needed
 timedatectl set-timezone 'Asia/Kolkata'
 dpkg-reconfigure -f noninteractive tzdata

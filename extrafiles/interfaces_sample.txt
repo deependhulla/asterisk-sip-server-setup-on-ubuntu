@@ -1,0 +1,14 @@
+# interfaces(5) file used by ifup(8) and ifdown(8)
+# Include files from /etc/network/interfaces.d:
+auto lo
+iface lo inet loopback
+
+iface enp0s25 inet manual
+
+auto enp9s0
+iface enp9s0 inet static
+	address 192.168.1.233/24
+	gateway 192.168.1.253
+	dns-nameservers 8.8.8.8 1.1.1.1
+
+source /etc/network/interfaces.d/*
