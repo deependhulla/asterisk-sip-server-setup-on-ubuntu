@@ -13,10 +13,14 @@ echo "postfix postfix/mailname string $CFG_HOSTNAME_FQDN" | debconf-set-selectio
 echo "iptables-persistent iptables-persistent/autosave_v4 boolean true" | debconf-set-selections
 echo "iptables-persistent iptables-persistent/autosave_v6 boolean true" | debconf-set-selections
 
+## for vim to work better for backspace
+stty erase ^?
+
+
 apt -y install vim jq yq fzf postfix conntrack openssh-server locales screen net-tools git mc tmux sendemail ffmpeg \
 sudo wget curl ethtool bridge-utils nmon iptraf-ng traceroute atop telnet arping software-properties-common python3.14-dev \
 dirmngr parted gdisk apt-transport-https whiptail lsb-release iptables ca-certificates iputils-ping python3.14-venv \
-debconf-utils gnupg pwgen xfsprogs nmap iftop htop multitail net-tools elinks pssh ubuntu-advantage-tools \
+debconf-utils gnupg pwgen xfsprogs nmap iftop htop multitail net-tools elinks pssh ubuntu-advantage-tools ifupdown nodejs npm \
 socat ipset iptables-persistent gnupg2 zip tar pv auditd rar php-cli iperf procinfo unrar rsync unzip vnstat ebtables 
 ## set to India IST timezone -- You can dissable it if needed
 timedatectl set-timezone 'Asia/Kolkata'
@@ -157,6 +161,9 @@ systemctl stop ufw 2>/dev/null
 systemctl disable ufw 2>/dev/null
 systemctl stop apparmor 2>/dev/null
 systemctl disable apparmor 2>/dev/null
+
+## install uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
 
 hostname -f
 ping `hostname -f` -c 2

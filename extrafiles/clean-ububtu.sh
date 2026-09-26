@@ -17,6 +17,7 @@ systemctl disable --now postfix
 systemctl disable --now polkit.service
 systemctl disable --now unattended-upgrades.service
 
+apt -y autoremove
 sudo sync && echo 3 | sudo tee /proc/sys/vm/drop_caches
 
 #sudo vi /etc/sysctl.conf
