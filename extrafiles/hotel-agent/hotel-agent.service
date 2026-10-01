@@ -1,0 +1,24 @@
+[Unit]
+Description=Club Emerald AI front-desk agent (Asterisk <-> Sarvam <-> LiveKit)
+After=network-online.target asterisk.service livekit-dev.service
+Wants=network-online.target livekit-dev.service
+
+[Service]
+Type=simple
+User=hotelagent
+Group=hotelagent
+WorkingDirectory=/opt/hotel-agent
+ExecStart=__NODE__ --env-file=/opt/hotel-agent/.env src/index.js
+Restart=always
+RestartSec=3
+Environment=NODE_ENV=production
+LimitNOFILE=65535
+SyslogIdentifier=hotel-agent
+# hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

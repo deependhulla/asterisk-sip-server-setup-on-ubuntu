@@ -1,0 +1,42 @@
+# --- Asterisk ARI ---
+ARI_URL=http://127.0.0.1:8088
+ARI_USER=agent
+ARI_PASS=agentpass
+ARI_APP=livekitserverdev
+# must match the [section] name in websocket_client.conf
+ARI_WS_CONNECTION=livekit_agent
+# Asterisk connects to THIS server for audio
+MEDIA_WS_PORT=8099
+# slin16 (16 kHz, default) | slin (8 kHz) | ulaw | alaw
+MEDIA_FORMAT=slin16
+
+# --- LiveKit (livekit-server --dev uses devkey/secret) ---
+USE_LIVEKIT=1
+LIVEKIT_URL=ws://127.0.0.1:7880
+LIVEKIT_API_KEY=devkey
+LIVEKIT_API_SECRET=secret
+
+# --- Sarvam (verify names at docs.sarvam.ai) ---
+SARVAM_API_KEY=sk_1234
+SARVAM_STT_MODEL=saaras:v3
+SARVAM_LLM_MODEL=sarvam-105b-conversations
+SARVAM_TTS_MODEL=bulbul:v3
+SARVAM_TTS_SPEAKER=pooja
+SARVAM_MAX_TOKENS=2000
+#SARVAM_STT_LANG=hi-IN
+SARVAM_STT_LANG=en-IN
+#SARVAM_STT_MODE=codemix
+#SARVAM_REASONING=low
+# --- Hotel ---
+HOTEL_NAME=Club Emerald
+# staff-notification URL: receives JSON POST for each guest request
+# Staff alert API: we POST form fields msgx=<text> and apikey=<key>; expects {"result":"success",...}
+ALERT_URL=https://myoffice.com/zulip-alert-for-ai-frontdesk.php
+ALERT_API_KEY=office-key
+# optional extra JSON webhook (leave empty to skip)
+# staff-notification URL: receives JSON POST for each guest request
+
+HOTEL_WEBHOOK_URL=http://127.0.0.1:3000/guest-request
+# --- Voice activity detection (raise if line noise triggers it) ---
+VAD_RMS=450
+

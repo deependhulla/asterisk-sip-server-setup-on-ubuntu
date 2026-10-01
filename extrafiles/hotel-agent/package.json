@@ -1,0 +1,13 @@
+{
+  "name": "hotel-ai-agent",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "scripts": { "start": "node --env-file=.env src/index.js" },
+  "engines": { "node": ">=22" },
+  "dependencies": {
+    "@livekit/rtc-node": "latest",
+    "livekit-server-sdk": "latest",
+    "ws": "^8.18.0"
+  }
+}
